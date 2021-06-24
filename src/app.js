@@ -13,7 +13,7 @@ export class App extends LitElement {
         super();
         this._codigo = "";
         this.cpf = new Cpf();
-        this.isAnInstance = true;
+        this.isAnInstance = html`<span>Sou do Tipo CPF</span>`;
     }
 
     _onClickComObjectAssignComNovaInstancia() {
@@ -22,7 +22,7 @@ export class App extends LitElement {
     }
 
     _isAnInstance() {
-        this.isAnInstance = this.cpf instanceof Cpf ? "Sou do Tipo CPF" : "NÃO sou do tipo CPF" ;
+        this.isAnInstance = this.cpf instanceof Cpf ? html`<span>Sou do Tipo CPF</span>` : html`<span><b>NÃO</b> sou do tipo CPF</span>`;
     }
 
     _onClickComObjectAssignComInstanciaExistente() {
@@ -51,7 +51,7 @@ export class App extends LitElement {
     <input type="text" @input=${e=> this._codigo = e.target.value}>
     <br>
     <p>Resultado: ${this.cpf.codigo}</p>
-    <p>Sou uma instância de Cpf? ${this.isAnInstance.toString()}</p>
+    <p>Sou uma instância de Cpf? ${this.isAnInstance}</p>
     <br>
     <button @click=${this._onClickComObjectAssignComNovaInstancia}>Set com Object.assign com nova instância</button>
     <button @click=${this._onClickComObjectAssignComInstanciaExistente}>Set com Object.assign com instância existente</button>
